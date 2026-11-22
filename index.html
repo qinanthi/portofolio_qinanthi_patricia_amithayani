@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <title>Qinanthi Patricia Amithayani. — Portofolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background:
+                radial-gradient(circle at 12% 15%, rgba(244, 114, 182, 0.22), transparent 38%),
+                radial-gradient(circle at 88% 12%, rgba(251, 113, 133, 0.18), transparent 42%),
+                radial-gradient(circle at 50% 85%, rgba(249, 168, 212, 0.25), transparent 48%),
+                linear-gradient(180deg, #fff7fa 0%, #fde8f0 50%, #fff5f8 100%);
+            min-height: 100vh;
+        }
+        .font-display { font-family: 'Syne', sans-serif; }
+
+        /* Pembukaan PORTOFOLIO 3D Lebih Berwibawa & Berdimensi */
+        /* Teks PORTOFOLIO: Gradasi Halus + Bayangan 3D Berlapis */
+        .por-grad-shadow {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(120deg, #f472b6 0%, #db2777 45%, #9d174d 78%, #6b1135 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Bayangan 3D diletakkan pada lapisan ::after agar gradasi teks tetap bersih & bayangan tebal */
+        .por-grad-shadow::after {
+            content: attr(data-text);
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            color: transparent;
+            text-shadow:
+                1px 1px 0 rgba(255, 255, 255, 0.85),
+                2px 3px 0 rgba(219, 39, 119, 0.28),
+                4px 6px 0 rgba(157, 23, 77, 0.24),
+                6px 9px 0 rgba(110, 17, 53, 0.2),
+                0 18px 28px rgba(157, 23, 77, 0.34);
+            pointer-events: none;
+        }
+
+        /* Aksen Sticker / Tag 3D Cantik */
+        .sticker-3d {
+            box-shadow:
+                0 6px 0 rgba(190, 24, 93, 0.16),
+                0 12px 22px rgba(157, 23, 77, 0.18),
+                inset 0 1px 1px rgba(255, 255, 255, 0.95);
+        }
+
+        /* Foto Pembuka Diam Tanpa Background */
+        .opening-photo-nobg {
+            filter: drop-shadow(0 22px 28px rgba(136, 19, 55, 0.28));
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+
+        /* Foto Pembuka Diam Tanpa Background */
+        .opening-photo-nobg {
+            filter: drop-shadow(0 24px 32px rgba(136, 19, 55, 0.3));
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+        .depth-3d {
+            perspective: 1100px;
+        }
+        .float-3d {
+            transform-style: preserve-3d;
+            will-change: transform;
+            box-shadow:
+                0 22px 45px -15px rgba(190, 24, 93, 0.16),
+                0 8px 20px -8px rgba(244, 114, 182, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+        .float-3d:hover {
+            box-shadow:
+                0 32px 60px -15px rgba(190, 24, 93, 0.26),
+                0 14px 28px -10px rgba(244, 114, 182, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+
+        @keyframes autoFoto3D {
+            0%, 100% {
+                transform: perspective(1000px) translateY(0px) rotateX(3deg) rotateY(-8deg);
+            }
+            50% {
+                transform: perspective(1000px) translateY(-10px) rotateX(-3deg) rotateY(8deg);
+            }
+        }
+        .photo-3d {
+            transform-style: preserve-3d;
+            will-change: transform;
+            animation: autoFoto3D 6s ease-in-out infinite;
+            box-shadow:
+                18px 24px 50px -12px rgba(157, 23, 77, 0.28),
+                -6px -6px 24px rgba(255, 255, 255, 0.85);
+        }
+        .photo-3d:hover {
+            box-shadow:
+                0 28px 55px -12px rgba(157, 23, 77, 0.36),
+                0 0 0 6px rgba(255, 255, 255, 0.65);
+        }
+
+        .icon-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+            box-shadow:
+                0 10px 20px -6px rgba(219, 39, 119, 0.35),
+                0 4px 8px -3px rgba(157, 23, 77, 0.15),
+                inset 0 2px 3px rgba(255, 255, 255, 0.85);
+        }
+        .tilt-card:hover .icon-3d {
+            transform: translateZ(28px) scale(1.12);
+        }
+        .tilt-card:hover .layer-pop {
+            transform: translateZ(16px);
+        }
+        .stage-bingkai-3d {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes floatBingkai {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .bingkai-kaca-3d {
+            transform-style: preserve-3d;
+            background: linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.45) 0%,
+                rgba(255, 228, 240, 0.22) 55%,
+                rgba(255, 255, 255, 0.36) 100%
+            );
+            backdrop-filter: blur(18px) saturate(135%);
+            -webkit-backdrop-filter: blur(18px) saturate(135%);
+            border: 1.5px solid rgba(255, 255, 255, 0.85);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+        }
+
+        /* Posisi 3 Bingkai di Desktop: Miring ke Samping & Mundur ke Belakang (Teks Tetap Lurus) */
+        @media (min-width: 1024px) {
+.bingkai-pos-kiri {
+            transform: perspective(1100px) rotateY(26deg) rotateX(4deg) translateZ(-55px) translateX(14px) translateY(14px);
+            box-shadow:
+                -8px 10px 0 rgba(219, 39, 119, 0.16),
+                -18px 28px 42px rgba(136, 19, 55, 0.22),
+                inset 0 1.5px 1px rgba(255, 255, 255, 0.9);
+        }
+
+        .bingkai-pos-tengah {
+            transform: perspective(1100px) rotateY(0deg) rotateX(3deg) translateZ(-25px) translateY(6px) scale(0.98);
+            box-shadow:
+                0 9px 0 rgba(219, 39, 119, 0.16),
+                0 24px 44px rgba(136, 19, 55, 0.24),
+                inset 0 1.5px 1px rgba(255, 255, 255, 0.95);
+            z-index: 15;
+        }
+
+        .bingkai-pos-kanan {
+            transform: perspective(1100px) rotateY(-26deg) rotateX(4deg) translateZ(-55px) translateX(-14px) translateY(14px);
+            box-shadow:
+                8px 10px 0 rgba(219, 39, 119, 0.16),
+                18px 28px 42px rgba(136, 19, 55, 0.22),
+                inset 0 1.5px 1px rgba(255, 255, 255, 0.9);
+        }
+
+        .bingkai-pos-kiri:hover,
+        .bingkai-pos-tengah:hover,
+        .bingkai-pos-kanan:hover {
+            transform: perspective(1100px) rotateY(0deg) rotateX(0deg) translateZ(35px) translateY(-12px) scale(1.04);
+            box-shadow:
+                0 14px 0 rgba(190, 24, 93, 0.2),
+                0 34px 56px rgba(136, 19, 55, 0.32),
+                inset 0 2px 2px rgba(255, 255, 255, 1);
+            z-index: 30;
+        }
+        }
+
+        /* Bingkai Kaca Dalam untuk Gambar */
+        .bingkai-dalam-kaca {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: inset 0 2px 10px rgba(136, 19, 55, 0.12);
+        }
+    </style>
+</head>
+<body class="text-rose-950 antialiased selection:bg-pink-200 selection:text-rose-950 overflow-x-hidden">
+
+    <!-- DEKORASI ORB 3D -->
+    <div class="pointer-events-none fixed -top-24 -left-24 w-80 h-80 rounded-full bg-gradient-to-br from-pink-300/45 to-rose-400/25 blur-2xl -z-10"></div>
+    <div class="pointer-events-none fixed top-1/3 -right-28 w-96 h-96 rounded-full bg-gradient-to-tl from-fuchsia-300/35 to-pink-200/30 blur-3xl -z-10"></div>
+    <div class="pointer-events-none fixed bottom-10 left-1/4 w-72 h-72 rounded-full bg-gradient-to-tr from-rose-300/35 to-pink-100/40 blur-2xl -z-10"></div>
+
+    <!-- PEMBUKAAN PORTOFOLIO (HANYA TULISAN PORTOFOLIO + STIKER IKON 3D + FOTO LEBIH DEKAT & NAIK) -->
+    <header id="pembuka-portofolio" class="min-h-screen flex items-center justify-center px-6 py-10 relative overflow-hidden">
+        <!-- Dekorasi Cahaya & Lingkaran Lembut di Latar -->
+        <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-pink-300/35 blur-3xl"></div>
+        <div class="pointer-events-none absolute bottom-0 right-10 w-80 h-80 rounded-full bg-rose-300/30 blur-3xl"></div>
+
+        <div class="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-2 items-center relative z-10">
+
+            <!-- Sisi Kiri: Hanya Tulisan PORTOFOLIO + Stiker Ikon 3D -->
+            <div class="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left relative">
+
+                <!-- Stiker Ikon 3D di Atas Kiri Judul (Tanpa Teks) -->
+                <div class="flex items-center gap-3 mb-2 pl-1">
+                    <span class="sticker-3d -rotate-6 w-9 h-9 rounded-2xl bg-white/90 flex items-center justify-center text-pink-500">
+                        <i class="fas fa-sparkles text-sm"></i>
+                    </span>
+                    <span class="sticker-3d rotate-6 w-9 h-9 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center text-white">
+                        <i class="fas fa-heart text-xs"></i>
+                    </span>
+                    <span class="sticker-3d -rotate-3 w-9 h-9 rounded-2xl bg-pink-100/95 flex items-center justify-center text-rose-600">
+                        <i class="fas fa-gem text-xs"></i>
+                    </span>
+                </div>
+
+                <!-- Satu-satunya Tulisan di Halaman Pertama -->
+                <div class="relative py-1">
+                    <h2 data-text="PORTOFOLIO"
+                        class="por-grad-shadow font-display text-[2.9rem] sm:text-6xl lg:text-[4.6rem] font-extrabold uppercase tracking-[0.03em] leading-[1.02] select-none">
+                        PORTOFOLIO
+                    </h2>
+
+                    <!-- Stiker Bintang 3D di Ujung Judul -->
+                    <span class="sticker-3d rotate-12 hidden sm:flex w-9 h-9 rounded-2xl bg-white/90 items-center justify-center text-pink-500 absolute -top-3 -right-6 pointer-events-none">
+                        <i class="fas fa-star text-xs"></i>
+                    </span>
+                </div>
+
+                <!-- Garis Gelombang & Stiker Ikon Kecil di Bawah Judul (Tanpa Teks) -->
+                <div class="mt-3 flex items-center gap-3">
+                    <svg viewBox="0 0 260 16" class="w-48 sm:w-60 h-4 text-pink-500/75" fill="none">
+                        <path d="M2 8 Q 34 1, 66 8 T 130 8 T 194 8 T 258 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    <span class="sticker-3d rotate-6 w-8 h-8 rounded-xl bg-white/85 flex items-center justify-center text-rose-500 shrink-0">
+                        <i class="fas fa-wand-magic-sparkles text-xs"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan: Foto Cutout Diam Lebih Dekat ke Judul & Lebih Naik -->
+            <div class="md:col-span-5 flex justify-center items-center relative md:-translate-y-12 md:-ml-4">
+                <!-- Cincin Ganda & Glow Lembut -->
+                <div class="pointer-events-none absolute w-72 sm:w-80 h-72 sm:h-80 rounded-full border-2 border-dashed border-pink-400/45"></div>
+                <div class="pointer-events-none absolute w-64 sm:w-72 h-64 sm:h-72 rounded-full bg-gradient-to-tr from-pink-300/40 via-rose-200/35 to-white/40 blur-[1px]"></div>
+                <div class="pointer-events-none absolute w-56 sm:w-64 h-56 sm:h-64 rounded-full bg-pink-400/20 blur-2xl"></div>
+
+                <!-- Stiker Ikon di Dekat Foto -->
+                <span class="sticker-3d -rotate-12 w-9 h-9 rounded-2xl bg-white/90 flex items-center justify-center text-pink-500 absolute top-2 right-6 sm:right-10 z-20 pointer-events-none">
+                    <i class="fas fa-sparkles text-xs"></i>
+                </span>
+
+               <img id="fotoPembuka" src="halaman1.png"
+     onerror="this.src='WhatsApp Image 2026-11-22 at 10.56.17.jpeg'"
+     class="opening-photo-nobg relative z-10 w-72 sm:w-80 md:w-[440px] lg:w-[470px] max-h-[540px] object-contain select-none">
+            </div>
+
+        </div>
+    </header>
+
+    <!-- BAGIAN 1: HALAMAN PERTAMA — PROFIL UTAMA & KONTAK -->
+    <section id="bagian-1" class="pt-12 pb-16 px-6">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+
+            <!-- Foto Profil 3D -->
+            <div class="md:col-span-5 flex justify-center depth-3d">
+                <div class="relative w-72 sm:w-80 aspect-[4/5]">
+                    <div class="absolute -inset-3 rounded-[2.5rem] bg-gradient-to-tr from-pink-400/35 via-rose-200/40 to-fuchsia-300/30 blur-xl"></div>
+                    <img id="heroFoto" src="profile.png" alt="Qinanthi Patricia Amithayani, S.Kom."
+                         onerror="this.src='https://placehold.co/600x750/fbcfe8/831843?text=Foto+Qinanthi'"
+                         class="relative photo-3d w-full h-full object-cover rounded-[2.2rem] ring-4 ring-white/80">
+                </div>
+            </div>
+
+            <!-- Identitas, Ringkasan, Kontak & CTA -->
+            <div class="md:col-span-7 space-y-4">
+                <span id="heroPendidikan" class="inline-block bg-white/80 backdrop-blur-md text-pink-700 text-xs font-semibold px-4 py-1.5 rounded-full shadow-[0_6px_18px_-6px_rgba(219,39,119,0.25)]">
+                    Lulusan S1 Teknik Informatika, Universitas Pamulang (Lulus 2026 | IPK 3,60)
+                </span>
+
+                <h1 id="heroNama" class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-rose-950 leading-[1.12] tracking-tight">
+                    Qinanthi Patricia Amithayani, S.Kom.
+                </h1>
+
+                <p id="heroRingkasan" class="text-rose-900/80 text-sm leading-relaxed"></p>
+
+                <!-- Grid Elemen Kontak -->
+                <div id="kontakGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1"></div>
+
+                <!-- Tombol Aksi Utama (CTA) -->
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <a id="btnDownloadCV" href="assets/cv/CV_Qinanthi_Patricia_Amithayani.pdf" download
+                       class="bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white text-xs font-semibold px-5 py-3.5 rounded-full transition shadow-[0_12px_25px_-8px_rgba(219,39,119,0.55)] flex items-center gap-2">
+                        <i class="fas fa-file-arrow-down text-xs"></i>
+                        <span>Download CV (PDF)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAGIAN 2: KEAHLIAN & APLIKASI YANG DIGUNAKAN -->
+    <section id="bagian-2" class="py-12 px-6 depth-3d">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-7">
+                <span class="text-xs font-bold uppercase tracking-widest text-pink-600">Bagian 2 • Skills & Tools Matrix</span>
+                <h2 class="font-display text-2xl md:text-3xl font-extrabold text-rose-950 mt-1">Keahlian & Aplikasi yang Digunakan</h2>
+            </div>
+
+            <div id="gridSkillsMatrix" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- BAGIAN 3: PENGALAMAN PEKERJAAN -->
+    <section id="bagian-3" class="py-12 px-6 depth-3d">
+        <div class="max-w-5xl mx-auto space-y-5">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-pink-600">Bagian 3 • Work Experience</span>
+                <h2 class="font-display text-2xl md:text-3xl font-extrabold text-rose-950 mt-1">Pengalaman Pekerjaan</h2>
+            </div>
+
+            <div id="gridContohAdmin" class="grid grid-cols-2 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- BAGIAN 4: CONTOH PROJECT -->
+    <section id="bagian-4" class="py-12 px-6 depth-3d">
+        <div class="max-w-5xl mx-auto space-y-5">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-pink-600">Bagian 4 • Selected Projects</span>
+                <h2 class="font-display text-2xl md:text-3xl font-extrabold text-rose-950 mt-1">Contoh Project</h2>
+            </div>
+
+            <div id="gridProjectWeb" class="stage-bingkai-3d grid grid-cols-3 gap-7 items-center py-6"></div>
+        </div>
+    </section>
+
+    <!-- BAGIAN 5: SERTIFIKASI (TOTAL 15 SERTIFIKAT) -->
+    <section id="bagian-5" class="py-12 pb-24 px-6 depth-3d">
+        <div class="max-w-5xl mx-auto space-y-7">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-pink-600">Bagian 5 • Credentials & Gallery</span>
+                    <h2 class="font-display text-2xl md:text-3xl font-extrabold text-rose-950 mt-1">Sertifikasi</h2>
+                </div>
+                <div id="tabSertifikat" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Highlight Sertifikat Utama BNSP -->
+            <div id="cardSertifikatUtama"></div>
+
+            <!-- Galeri 15 Sertifikat -->
+            <div id="gridGaleriSertifikat" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+            <!-- Highlight Sertifikat Utama BNSP -->
+            <div id="cardSertifikatUtama"></div>
+
+            <!-- Galeri 15 Sertifikat -->
+            <div id="gridGaleriSertifikat" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 px-6 text-center text-xs text-rose-900/60">
+        <p>© 2026 Qinanthi Patricia Amithayani, S.Kom.</p>
+    </footer>
+    <!-- MODAL PREVIEW DOKUMEN / SERTIFIKAT / PROJECT -->
+    <div id="lightbox" onclick="tutupLightbox()" class="fixed inset-0 bg-rose-950/75 backdrop-blur-md hidden items-center justify-center z-50 p-4">
+        <div class="max-w-4xl w-full bg-white/95 backdrop-blur-xl rounded-[2rem] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.4)]" onclick="event.stopPropagation()">
+            <div class="p-4 bg-pink-50/70 flex justify-center">
+                <iframe id="lbPdf" src="" title="Preview Dokumen PDF"
+                        class="w-full h-[70vh] rounded-2xl bg-white shadow-inner hidden"></iframe>
+                <img id="lbImg" src="" alt="Preview Dokumen"
+                     onerror="this.src='https://placehold.co/800x520/fbcfe8/831843?text=Dokumen+Belum+Diunggah'"
+                     class="max-h-[68vh] object-contain rounded-2xl shadow-lg">
+            </div>
+            <div class="px-6 py-4 flex items-center justify-between gap-4">
+                <div>
+                    <h3 id="lbTitle" class="font-bold text-rose-950 text-sm"></h3>
+                    <p id="lbSub" class="text-xs text-rose-800/75 mt-0.5"></p>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <a id="lbOpenTab" href="#" target="_blank" rel="noopener noreferrer"
+                       class="hidden bg-pink-100 hover:bg-pink-200 text-pink-800 text-xs font-semibold px-4 py-2.5 rounded-full transition">
+                        Buka PDF
+                    </a>
+                    <button type="button" onclick="tutupLightbox()" class="bg-gradient-to-r from-pink-600 to-rose-500 text-white text-xs font-semibold px-5 py-2.5 rounded-full hover:opacity-95 transition shadow-md shadow-pink-500/30 cursor-pointer">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
